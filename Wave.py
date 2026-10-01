@@ -6,13 +6,11 @@ class Advec_wave():
     def __init__(self, 
                  central_pos, 
                  magnitude, 
-                 std, 
-                 wave_speed, 
+                 std,  
                  ds,
                  grid_length):
 
         
-        self.wave_speed = wave_speed
         self.ds = ds
         self.grid_length = grid_length
 
