@@ -54,7 +54,7 @@ def FTCS(Wave_list,
 
     for j in range(steps):
         u_next = u.copy()
-        u_next[1:-1] = u[1:-1] - (Wave_list['wave_speed'] * dt / (2 * ds)) * (u[2:] - u[:-2])
+        u_next[1:-1] = u[1:-1] - 0.5 *(courant_number) * (u[2:] - u[:-2])
         u = u_next
         u_history.append(u.copy())
         times.append(t_i + (j + 1) * dt)                 
