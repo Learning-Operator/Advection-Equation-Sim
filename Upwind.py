@@ -58,7 +58,7 @@ def upwind(Wave_list,
     if Wave_list['wave_speed'] > 0:
         for j in range(steps):
             u_next = u.copy()
-            u_next[1:] = u[1:] - (courant_number) * (u[:-1] - u[1:])
+            u_next[1:] = u[1:] - courant_number * (u[1:] - u[:-1])
             u = u_next
             u_history.append(u.copy())
             times.append(t_i + (j + 1) * dt)
