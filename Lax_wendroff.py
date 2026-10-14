@@ -54,7 +54,7 @@ def Lax_method(Wave_list,
                   std=Wave_list['std'], 
                   wave_speed=Wave_list['wave_speed'], 
                   ds=ds, 
-                  grid_length=Wave_list['grid_length'])
+                  grid_length=Wave_list['cell_amt'])
 
     u = wave.density_array.copy()
     u_present = u.copy()
@@ -64,8 +64,8 @@ def Lax_method(Wave_list,
 
     for j in range(steps):
         u_next = u_present
-        u_phalfnhalf = 0.5 * (u_next[1:] + u_next[:-1]) - 0.5 * courant_number * (u_next[1:] - u_next[:-1])
-        u_phalfhalf = 0.5 * (u_next[1:-1] + u_next[2:]) - 0.5 * courant_number * (u_next[2:] - u_next[1:])
+        u_phalfnhalf = 0.5 * (u_next[1:-1] + u_next[:-2]) - 0.5 * courant_number * (u_next[1:-1] - u_next[:-2])
+        u_phalfhalf = 0.5 * (u_next[1:-1] + u_next[2:]) - 0.5 * courant_number * (u_next[2:] - u_next[1:-1])
         u_next[1:-1] = u_next[1:-1] - courant_number * (u_phalfhalf - u_phalfnhalf)
         u_history.append(u_next.copy())
         times.append(t_i + (j + 1) * dt)
