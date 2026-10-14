@@ -80,5 +80,4 @@ def upwind(Wave_list,
             times.append(t_i + (j + 1) * dt)
 
     Wave.density_array = u
-
     return Wave.x, np.array(times), np.array(u_history)
