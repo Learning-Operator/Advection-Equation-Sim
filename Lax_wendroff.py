@@ -65,7 +65,7 @@ def Lax_method(Wave_list,
     for j in range(steps):
         u_next = u_present
         u_phalfnhalf = 0.5 * (u_next[1:] + u_next[:-1]) - 0.5 * courant_number * (u_next[1:] - u_next[:-1])
-        u_phalfhalf = 0.5 * (u_next[1:] + u_next[2:]) - 0.5 * courant_number * (u_next[2:] - u_next[1:])
+        u_phalfhalf = 0.5 * (u_next[1:-1] + u_next[2:]) - 0.5 * courant_number * (u_next[2:] - u_next[1:])
         u_next[1:-1] = u_next[1:-1] - courant_number * (u_phalfhalf - u_phalfnhalf)
         u_history.append(u_next.copy())
         times.append(t_i + (j + 1) * dt)
